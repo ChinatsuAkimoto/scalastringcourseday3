@@ -1,4 +1,4 @@
-<h1>Scalaの文字列処理 - Day 3 Code PointとSurrogate Pair</h1>
+<h1>Day 3 Code PointとSurrogate Pair</h1>
 <img src="https://github.com/ynupc/scalastringcourse/blob/master/image/day3/string_course.001.jpeg" width="500px"><br>
 今日は、Code PointとSurrogate Pairについて紹介したいと思います。ご質問や間違いなどのご指摘は下記のコメント欄にお書きください。  
 <br>
