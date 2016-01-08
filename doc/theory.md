@@ -12,13 +12,13 @@ BOMとはUnicodeで符号化した際にテキストデータの先頭につけ�
 
 符号化形式（符号化スキーム）|エンディアンの区別|バイトオーダーマーク（BOM）
 ---|---|---
-UTF-8<||0xEF 0xBB 0xBF（なお日本ではBOM無しはUTF-8Nと呼ばれることがある）
+UTF-8||0xEF 0xBB 0xBF（なお日本ではBOM無しはUTF-8Nと呼ばれることがある）
 UTF-16|BE|0xFE 0xFF
-|LE|0xFF 0xFE
+&nbsp;|LE|0xFF 0xFE
 UTF-16BE|&nbsp;|（付加は認められない）
 UTF-16LE|&nbsp;|（付加は認められない）
 UTF-32|BE|0x00 0x00 0xFE 0xFF
-|LE|0xFF 0xFE 0x00 0x00
+&nbsp;|LE|0xFF 0xFE 0x00 0x00
 UTF-32BE|&nbsp;|（付加は認められない）
 UTF-32LE|&nbsp;|（付加は認められない）
 <a href="https://ja.wikipedia.org/wiki/UTF-7" target="_blank">UTF-7</a>|&nbsp;|0x2B 0x2F 0x76 ※ （※は次のバイトの値によって異なり、0x38、0x39、0x2B、0x2Fのいずれかがくる）
