@@ -4,11 +4,11 @@
 コードポイントとは、文字コード上で、文字につけられた番号のことです。Unicodeのコードポイントは<a href="https://ja.wikipedia.org/wiki/Unicode%E4%B8%80%E8%A6%A7%E8%A1%A8" target="_blank">WikipediaのUnicode一覧表のページ</a>から調べることができます。
 ScalaのCharにはChar１つで表せない文字が存在するため、文字単位を正確に扱いたい場合は、Charではなくコードポイントを使用します。コードポイントの符号化方式のことを<a href="https://ja.wikipedia.org/wiki/UTF-32" target="_blank">UTF-32BE</a>と言います。
 CharやStringは<a href="https://ja.wikipedia.org/wiki/UTF-16" target="_blank">UTF-16BE</a>であり、<a href="https://ja.wikipedia.org/wiki/%E5%9F%BA%E6%9C%AC%E5%A4%9A%E8%A8%80%E8%AA%9E%E9%9D%A2" target="_blank">BMP領域</a>ではChar１つで１文字、<a href="https://ja.wikipedia.org/wiki/%E8%BF%BD%E5%8A%A0%E9%9D%A2" target="_blank">追加領域</a>ではChar２つで１文字を表現します。
-なお、プログラム上で文字を扱う場合は<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AF" target="_blank">BOM (Byte Order Mark)</a>はつけずに、一般的には<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%87%E3%82%A3%E3%82%A2%E3%83%B3" target="_blank">Big Endian</a>で扱います。実際には使用するEndianはプロセッサに依存して選択されるべきですが、ScalaやJavaなど<a href="https://ja.wikipedia.org/wiki/Java%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3" target="_blank">JVM</a>上で動く言語ではJVMの仕様により必ずBig Endianで扱います。
+なお、プログラム上で文字を扱う場合は<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AF" target="_blank">BOM (Byte Order Mark)</a>はつけずに、一般的には<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%87%E3%82%A3%E3%82%A2%E3%83%B3" target="_blank">ビッグエンディアン</a>で扱います。実際には使用するエンディアンはプロセッサに依存して選択されるべきですが、ScalaやJavaなど<a href="https://ja.wikipedia.org/wiki/Java%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3" target="_blank">JVM</a>上で動く言語ではJVMの仕様により必ずビッグエンディアンで扱います。
 <h3>コラム：BOMとエンディアン</h3>
 BOMとはUnicodeで符号化した際にテキストデータの先頭につける制御記号のことです。
-プロセッサの仕様により、データを４byte単位で区切った場合、先頭のbyteから順方向に読み込むのか、末尾のbyteから逆方向に読み込むのか、あるいはそれ以外の順序で読み込むのか、読み込む順序を決める必要があります。Endianとは４byteの読み込み順序です。先頭から順方向に読み込む場合Big Endianと言い、末尾から逆方向に読み込む場合Little Endianと言います。Endianの違いをBOMにより復号器に認識させるか、テキストと復号器がどのEndianを使用するかをあらかじめ決めておく必要があります。BOMをつけてBOMでEndianを宣言するUTF-16のことを「UTF-16」、BOMをつけないでBig Endianと決められているUTF-16のことを「UTF-16BE」、BOMをつけないでLittle Endianと決められているUTF-16のことを「UTF-16LE」と言います。そして、BOMをつけてBOMでEndianを宣言するUTF-32のことを「UTF-32」、BOMをつけないでBig Endianと決められているUTF-32のことを「UTF-32BE」、BOMをつけないでLittle Endianと決められているUTF-32のことを「UTF-32LE」と言います。
-さらに、BOMをつけてBOMでEndianを宣言することになっていますがBOMが存在しなかった場合はデフォルトでBig Endianとして読み込むことがUnicodeで決められていますが、WindowsではLittle Endianとして読み込まれます。  
+プロセッサの仕様により、データを４byte単位で区切った場合、先頭のbyteから順方向に読み込むのか、末尾のbyteから逆方向に読み込むのか、あるいはそれ以外の順序で読み込むのか、読み込む順序を決める必要があります。エンディアンとは４byteの読み込み順序です。先頭から順方向に読み込む場合ビッグエンディアンと言い、末尾から逆方向に読み込む場合リトルエンディアンと言います。エンディアンの違いをBOMにより復号器に認識させるか、テキストと復号器がどのエンディアンを使用するかをあらかじめ決めておく必要があります。BOMをつけてBOMでエンディアンを宣言するUTF-16のことを「UTF-16」、BOMをつけないでビッグエンディアンと決められているUTF-16のことを「UTF-16BE」、BOMをつけないでリトルエンディアンと決められているUTF-16のことを「UTF-16LE」と言います。そして、BOMをつけてBOMでエンディアンを宣言するUTF-32のことを「UTF-32」、BOMをつけないでビッグエンディアンと決められているUTF-32のことを「UTF-32BE」、BOMをつけないでリトルエンディアンと決められているUTF-32のことを「UTF-32LE」と言います。
+さらに、BOMをつけてBOMでエンディアンを宣言することになっていますがBOMが存在しなかった場合はデフォルトでビッグエンディアンとして読み込むことがUnicodeで決められていますが、Windowsではリトルエンディアンとして読み込まれます。  
 <table>
 <tr><th>符号化形式（符号化スキーム）</th><th>エンディアンの区別</th><th>バイトオーダーマーク（BOM）</th></tr>
 <tr><td>UTF-8</td><td></td><td>0xEF 0xBB 0xBF（なお日本ではBOM無しはUTF-8Nと呼ばれることがある）</td></tr>
@@ -38,7 +38,7 @@ $ vi -b src/test/resources/day3/utf8_with_bom.xml
   1 <feff><?xml version="1.0" encoding="UTF-8" standalone="yes"?>^M
   2 <root>utf8 with bom</root>
 ```
-先頭の```<feff>```がBOMです。この```<feff>```からもわかるようにUTF-8のBOMはUTF-16やUTF-32でBig Endianを意味するU+FEFFです。U+FEFFをUTF-8でエンコードすると３bytes (＝３<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%AF%E3%83%86%E3%83%83%E3%83%88_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" target="_blank">octets</a>)になり16進数で表すと"0xEF 0xBB 0xBF"です。
+先頭の```<feff>```がBOMです。この```<feff>```からもわかるようにUTF-8のBOMはUTF-16やUTF-32でビッグエンディアンを意味するU+FEFFです。U+FEFFをUTF-8でエンコードすると３bytes (＝３<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%AF%E3%83%86%E3%83%83%E3%83%88_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" target="_blank">octets</a>)になり16進数で表すと"0xEF 0xBB 0xBF"です。
 <h4>（２）ScalaによるUTF-8のBOMの自動削除</h4>
 一々BOMがついていないかをVimでUTF-8のファイルを開いて確認し、手動で削除する作業は大変です。
 BOM付きのファイルをScala上から開く際にファイルにBOMが存在していたらBOMを自動的に削除（スキップ）させる方法について説明します。
