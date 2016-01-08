@@ -9,20 +9,21 @@ CharやStringは<a href="https://ja.wikipedia.org/wiki/UTF-16" target="_blank">U
 BOMとはUnicodeで符号化した際にテキストデータの先頭につける制御記号のことです。
 プロセッサの仕様により、データを４byte単位で区切った場合、先頭のbyteから順方向に読み込むのか、末尾のbyteから逆方向に読み込むのか、あるいはそれ以外の順序で読み込むのか、読み込む順序を決める必要があります。エンディアンとは４byteの読み込み順序です。先頭から順方向に読み込む場合ビッグエンディアンと言い、末尾から逆方向に読み込む場合リトルエンディアンと言います。エンディアンの違いをBOMにより復号器に認識させるか、テキストと復号器がどのエンディアンを使用するかをあらかじめ決めておく必要があります。BOMをつけてBOMでエンディアンを宣言するUTF-16のことを「UTF-16」、BOMをつけないでビッグエンディアンと決められているUTF-16のことを「UTF-16BE」、BOMをつけないでリトルエンディアンと決められているUTF-16のことを「UTF-16LE」と言います。そして、BOMをつけてBOMでエンディアンを宣言するUTF-32のことを「UTF-32」、BOMをつけないでビッグエンディアンと決められているUTF-32のことを「UTF-32BE」、BOMをつけないでリトルエンディアンと決められているUTF-32のことを「UTF-32LE」と言います。
 さらに、BOMをつけてBOMでエンディアンを宣言することになっていますがBOMが存在しなかった場合はデフォルトでビッグエンディアンとして読み込むことがUnicodeで決められていますが、Windowsではリトルエンディアンとして読み込まれます。  
-<table>
-<tr><th>符号化形式（符号化スキーム）</th><th>エンディアンの区別</th><th>バイトオーダーマーク（BOM）</th></tr>
-<tr><td>UTF-8</td><td></td><td>0xEF 0xBB 0xBF（なお日本ではBOM無しはUTF-8Nと呼ばれることがある）</td></tr>
-<tr><td rowspan="2">UTF-16</td><td>BE</td><td>0xFE 0xFF</td></tr>
-<tr><td>LE</td><td>0xFF 0xFE</td></tr>
-<tr><td>UTF-16BE</td><td>&nbsp;</td><td>（付加は認められない）</td></tr>
-<tr><td>UTF-16LE</td><td>&nbsp;</td><td>（付加は認められない）</td></tr>
-<tr><td rowspan="2">UTF-32</td><td>BE</td><td>0x00 0x00 0xFE 0xFF</td></tr>
-<tr><td>LE</td><td>0xFF 0xFE 0x00 0x00</td></tr>
-<tr><td>UTF-32BE</td><td>&nbsp;</td><td>（付加は認められない）</td></tr>
-<tr><td>UTF-32LE</td><td>&nbsp;</td><td>（付加は認められない）</td></tr>
-<tr><td><a href="https://ja.wikipedia.org/wiki/UTF-7" target="_blank">UTF-7</a></td><td>&nbsp;</td><td>0x2B 0x2F 0x76 ※ （※は次のバイトの値によって異なり、0x38、0x39、0x2B、0x2Fのいずれかがくる）</td></tr>
-</table>
-Endianという言葉は、ガリバー旅行記の第1部「小人国」に登場する、卵を丸い方の端から割る人々（Big Endians）と尖った方の端から割る人々 (Little Endians) に由来するようです。
+
+符号化形式（符号化スキーム）|エンディアンの区別|バイトオーダーマーク（BOM）
+---|---|---
+UTF-8<||0xEF 0xBB 0xBF（なお日本ではBOM無しはUTF-8Nと呼ばれることがある）
+UTF-16|BE|0xFE 0xFF
+|LE|0xFF 0xFE
+UTF-16BE|&nbsp;|（付加は認められない）
+UTF-16LE|&nbsp;|（付加は認められない）
+UTF-32|BE|0x00 0x00 0xFE 0xFF
+|LE|0xFF 0xFE 0x00 0x00
+UTF-32BE|&nbsp;|（付加は認められない）
+UTF-32LE|&nbsp;|（付加は認められない）
+<a href="https://ja.wikipedia.org/wiki/UTF-7" target="_blank">UTF-7</a>|&nbsp;|0x2B 0x2F 0x76 ※ （※は次のバイトの値によって異なり、0x38、0x39、0x2B、0x2Fのいずれかがくる）
+
+エンディアン（Endian）という言葉は、ガリバー旅行記の第1部「小人国」に登場する、卵を丸い方の端から割る人々（Big Endians）と尖った方の端から割る人々 (Little Endians) に由来するようです。
 <h3>コラム：<a href="https://ja.wikipedia.org/wiki/UTF-8" target="_blank">UTF-8</a>のBOMを削除する方法</h3>
 UTF-8でのBOMはビッグエンディアンやリトルエンディアンのようなバイト順を表すものではなく特に意味がありません。
 さらにプログラム上からBOM付きのUTF-8のファイルを読み込もうとするとExceptionが発生する場合があるため、一般的にはBOM無しのUTF-8で保存することが好ましいです。
