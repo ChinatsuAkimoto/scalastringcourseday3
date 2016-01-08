@@ -1,7 +1,7 @@
 <h1>Day 3 コードポイントとサロゲートペア</h1>
 <img src="/image/string_course.001.jpeg" width="500px"><br>
 今日は、コードポイントとサロゲートペアについて紹介したいと思います。
-<br>
+<br><br>
 <strong><a href="doc/theory.md#1コードポイントとサロゲートペアの理論">1.　コードポイントとサロゲートペアの理論</a></strong>  
 <strong><a href="doc/theory.md#11コードポイント">1.1　コードポイント</a></strong>  
 <a href="doc/theory.md#コラムbomとeエンディアン">コラム：BOMとエンディアン</a>  
