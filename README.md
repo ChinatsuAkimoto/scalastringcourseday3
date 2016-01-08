@@ -1,7 +1,14 @@
 <h1>Day 3 コードポイントとサロゲートペア</h1>
 <img src="/image/string_course.001.jpeg" width="500px"><br>
-今日は、コードポイントとサロゲートペアについて紹介したいと思います。
-<br><br>
+今日は、コードポイントとサロゲートペアについて紹介したいと思います。  
+
+<h2>リポジトリ</h2>
+<a href="https://github.com/ynupc/scalastringcourseday3" target="_blank">https://github.com/ynupc/scalastringcourseday3</a>  
+
+<h2>クイズ</h2>
+<a href="http://ynupc.github.io/quiz/scalastringcourse/day3/" target="_blank">http://ynupc.github.io/quiz/scalastringcourse/day3/</a>  
+
+<h2>目次</h2>
 <strong><a href="doc/theory.md#1コードポイントとサロゲートペアの理論">1.　コードポイントとサロゲートペアの理論</a></strong>  
 <strong><a href="doc/theory.md#11コードポイント">1.1　コードポイント</a></strong>  
 <a href="doc/theory.md#コラムbomとeエンディアン">コラム：BOMとエンディアン</a>  
