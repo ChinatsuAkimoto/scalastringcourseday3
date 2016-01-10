@@ -5,7 +5,7 @@
 ScalaのCharにはChar１つで表せない文字が存在するため、文字単位を正確に扱いたい場合は、Charではなくコードポイントを使用します。コードポイントの符号化方式のことを<a href="https://ja.wikipedia.org/wiki/UTF-32" target="_blank">UTF-32BE</a>と言います。
 CharやStringは<a href="https://ja.wikipedia.org/wiki/UTF-16" target="_blank">UTF-16BE</a>であり、<a href="https://ja.wikipedia.org/wiki/%E5%9F%BA%E6%9C%AC%E5%A4%9A%E8%A8%80%E8%AA%9E%E9%9D%A2" target="_blank">BMP領域</a>ではChar１つで１文字、<a href="https://ja.wikipedia.org/wiki/%E8%BF%BD%E5%8A%A0%E9%9D%A2" target="_blank">追加領域</a>ではChar２つで１文字を表現します。
 なお、プログラム上で文字を扱う場合は<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%A4%E3%83%88%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AF" target="_blank">BOM (Byte Order Mark)</a>はつけずに、一般的には<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%87%E3%82%A3%E3%82%A2%E3%83%B3" target="_blank">ビッグエンディアン</a>で扱います。実際には使用するエンディアンはプロセッサに依存して選択されるべきですが、ScalaやJavaなど<a href="https://ja.wikipedia.org/wiki/Java%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3" target="_blank">JVM</a>上で動く言語ではJVMの仕様により必ずビッグエンディアンで扱います。  
-BOMとエンディアンについては<a href="#">コラム：BOMとエンディアン</a>、UTF-8のBOMを削除する方法については<a href="#">コラム：UTF-8のBOMを削除する方法</a>、UTF-8のセキュリティ問題については<a href="#">コラム：UTF-8のセキュリティ問題、Nimda</a>、UTF-8のテキストのMySQLへの保存については<a href="#">コラム：UTF-8のテキストのMySQLへの保存、utf8mb4</a>を参照ください。
+BOMとエンディアンについては<a href="#コラムbomとエンディアン">コラム：BOMとエンディアン</a>、UTF-8のBOMを削除する方法については<a href="#コラムutf-8のbomを削除する方法">コラム：UTF-8のBOMを削除する方法</a>、UTF-8のセキュリティ問題については<a href="#コラムutf-8のセキュリティ問題nimda">コラム：UTF-8のセキュリティ問題、Nimda</a>、UTF-8のテキストのMySQLへの保存については<a href="#コラムutf-8のテキストのmysqlへの保存utf8mb4">コラム：UTF-8のテキストのMySQLへの保存、utf8mb4</a>を参照ください。
 ***
 <h3>1.2　サロゲートペア</h3>
 <img src="../image/string_course.003.jpeg" width="500px"><br>
