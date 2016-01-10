@@ -50,6 +50,6 @@
 <strong><a href="doc/implementation.md#210stringからイテレータの生成">2.10　Stringからイテレータの生成</a></strong>  
 <strong><a href="doc/implementation.md#2101stringcharacteriteratorによるchar単位のイテレータ">2.10.1　StringCharacterIteratorによるChar単位のイテレータ</a></strong>  
 <strong><a href="doc/implementation.md#2102intstreamによるchar単位のイテレータ">2.10.2　IntStreamによるChar単位のイテレータ</a></strong>  
-<strong><a href="doc/implementation.md#2103intstreamによるコードポイント単位のイテレータ">2.10.3　IntStreamによるコードポイント単位のIterator</a></strong>  
+<strong><a href="doc/implementation.md#2103intstreamによるコードポイント単位のイテレータ">2.10.3　IntStreamによるコードポイント単位のイテレータ</a></strong>  
 <strong><a href="doc/implementation.md#211コードポイントとサロゲートペアに関する特に重要な変換">2.11　コードポイントとサロゲートペアに関する特に重要な変換</a></strong>  
 <strong><a href="doc/implementation.md#212java-7以前のstringからコードポイント配列-arrayintへの変換">2.12　Java 7以前のStringからコードポイント配列 (Array[Int])への変換</a></strong>
