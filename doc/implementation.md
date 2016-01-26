@@ -167,8 +167,7 @@ CharSequenceインターフェースを実装するオブジェクト、String�
 codePointAtは順方向、codePointBeforeは逆方向に解析します。
 <h4>2.4.1　指定インデックス (Int)にある文字のコードポイント (Int)の取得</h4>
 <img src="../image/string_course.014.jpeg" width="500px"><br>
-CharSequenceインターフェースを実装するオブジェクト、Stringオブジェクト、Char配列のどのメソッドを使用するのが良いかについては、Char配列のようなlower levelで扱うと処理が高速化し、Stringオブジェクトのようなhigher levelで扱うと処理速度は低下します。
-一般的にできるだけlower levelで処理を書くと（究極的にはJVMや<a href="https://ja.wikipedia.org/wiki/LLVM" target="_blank">LLVM</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BB%E3%83%B3%E3%83%96%E3%83%AA%E8%A8%80%E8%AA%9E" target="_blank">アセンブリ言語</a>、<a href="https://ja.wikipedia.org/wiki/%E6%A9%9F%E6%A2%B0%E8%AA%9E" target="_blank">機械語</a>など）処理は高速化しますが、プログラム長が長くなり、プログラムを書く時間が延び、変数が増え、可読性が下がるため、バグが発生しやすく、保守性が低いプログラムになります。逆にできるだけhigher levelで書くと、無駄にメモリを使用したり、余計なオーバヘッドが発生し、処理が遅くなりがちです。例えば、Char配列のラッパークラスのStringクラスからCharを扱うと、Stringクラスが持つ処理に不要なメソッドがメモリに乗りメモリ効率が悪く、また、Stringクラスを介してChar配列にアクセスするため、直接Char配列にアクセスするより、速度が低下します。プログラミングでは、このようなトレードオフがよく発生します。どのくらいの保守性低下を許してどのくらいの処理高速化をとるのかはケースバイケースでのプログラマによる選択が必要です。  <br>
+CharSequenceインターフェースを実装するオブジェクト、Stringオブジェクト、Char配列のどのメソッドを使用するのが良いかについてですが、基本的にどれも内部でChar配列を扱うため処理速度にあまり違いはありません。高速化しようとlower levelで扱うためにStringをtoCharArrayメソッドでChar配列に変換してからCharacter.codePointAt/codePointBeforeを使うとtoCharArrayメソッドの処理分だけ遅くなります。<br>
 <h4>2.4.2　順方向に解析しコードポイント (Int)を取得</h4>
 Char配列からコードポイントを順方向にCharacter.codePointAtメソッドで変換できます。
 ```scala
