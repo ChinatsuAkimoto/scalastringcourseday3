@@ -5,10 +5,11 @@ import java.nio.charset.{Charset, StandardCharsets}
 import java.nio.file.{Files, Path, Paths}
 import java.text.{CharacterIterator, StringCharacterIterator}
 import java.util.stream.IntStream
-import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.parsers.{DocumentBuilder, DocumentBuilderFactory}
 
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
+import org.w3c.dom.{Element, Document}
 
 import scala.xml.{Elem, XML}
 
@@ -21,17 +22,18 @@ class Day3TestSuite extends AssertionsForJUnit {
 
   @Test
   def testW3CDOMForUTF8BOM(): Unit = {
-    //val inputStreamWithBOM: InputStream = Files.newInputStream(input)
-    val inputStreamWithoutBOM: InputStream = skipUTF8BOM(Files.newInputStream(input), StandardCharsets.UTF_8)
+    val inputStreamWithBOM: InputStream = Files.newInputStream(input)
+    val inputStreamWithoutBOM: InputStream = skipUTF8BOM(inputStreamWithBOM, StandardCharsets.UTF_8)
 
     //org.w3c.dom
-    val dbf = DocumentBuilderFactory.newInstance()
-    val db = dbf.newDocumentBuilder()
-    //val doc = db.parse(inputStreamWithBOM)
+    val dbf: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()
+    val db: DocumentBuilder = dbf.newDocumentBuilder()
+    //val doc: Document = db.parse(inputStreamWithBOM)
     //java.nio.channels.ClosedChannelException
-    val doc = db.parse(inputStreamWithoutBOM)
-    val rootElemInDOM = doc.getDocumentElement
+    val doc: Document = db.parse(inputStreamWithoutBOM)
+    val rootElemInDOM: Element = doc.getDocumentElement
     inputStreamWithoutBOM.close()
+    inputStreamWithBOM.close()
 
     assert(rootElemInDOM.getTextContent == "utf8 with bom")
   }
@@ -51,7 +53,7 @@ class Day3TestSuite extends AssertionsForJUnit {
     if (encoding != StandardCharsets.UTF_8) {
       return inputStream
     }
-    val bom: Array[Byte] = Array(0xEF, 0xBB, 0xBF).map(_.toByte)
+    val bom: Array[Byte] = Array[Int](0xEF, 0xBB, 0xBF).map(_.toByte)
     val bomSize: Int = bom.length
     val is: InputStream = {
       if (inputStream.markSupported()) {
@@ -395,7 +397,7 @@ class Day3TestSuite extends AssertionsForJUnit {
 
   @Test
   def testCharArrayToString(): Unit = {
-    val charArray: Array[Char] = Array(0xD842.toChar, 0xDFB7.toChar, '野', '家')
+    val charArray: Array[Char] = Array[Char](0xD842.toChar, 0xDFB7.toChar, '野', '家')
     val str: String = new String(charArray)
 
     assert(str == "𠮷野家")
