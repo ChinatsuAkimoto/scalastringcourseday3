@@ -811,7 +811,7 @@ IBMのMasahiko Maederaさんの技術文書によると、最も高速な変換�
 ```
 ***
 <h3>コラム：IntStream</h3>
-IntStreamはJavaのInteger型のlazy listです。call-by-needで値が評価されるので、IntStreamはfilter、map、flatMapのようなメソッドをメソッドチェーンのように記述することができますが、そのメソッドの度にその処理を持った新たなIntSteamが生成されます。iteratorやtoArrayのようなメソッドが実行されるときに初めて値が評価されます。closeメソッドは特に呼び出す必要はないです。
+IntStreamはJavaのInteger型のlazy listです。call-by-needで値が評価されるので、IntStreamはfilter、map、flatMapのようなメソッドをメソッドチェーンのように記述することができますが、そのメソッドの度にその処理を持った新たなIntSteamが生成されます。iteratorやtoArrayのようなメソッドが実行されるときに初めて値が評価されます。closeメソッドは特に呼び出す必要はないです。closeメソッドを呼び出すとonCloseメソッドが実行されます。
 
 > ストリームはBaseStream.close()メソッドを持ち、AutoCloseableを実装していますが、ほとんどすべてのストリーム・インスタンスは、実際には使用後にクローズする必要はありません。一般に、クローズが必要になるのは、入出力チャネルをソースに持つストリーム(Files.lines(Path, Charset)から返されるものなど)だけです。大部分のストリームの背後に存在しているのは、コレクション、配列、または生成関数なので、特別なリソース管理を行う必要はありません。(クローズが必要なストリームは、try-with-resources文のリソースとして宣言できます。)
 
