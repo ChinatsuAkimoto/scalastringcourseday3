@@ -809,6 +809,7 @@ IBMのMasahiko Maederaさんの技術文書によると、最も高速な変換�
     codePoints
   }
 ```
+***
 <h3>コラム：IntStream</h3>
 IntStreamはJavaのInteger型のlazy listです。call-by-needで値が評価されるので、IntStreamはfilter、map、flatMapのようなメソッドをメソッドチェーンのように記述することができますが、そのメソッドの度にその処理を持った新たなIntSteamが生成されます。iteratorやtoArrayのようなメソッドが実行されるときに初めて値が評価されます。closeメソッドは特に呼び出す必要はないです。
 
