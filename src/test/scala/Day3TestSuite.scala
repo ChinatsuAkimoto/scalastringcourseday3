@@ -2,14 +2,15 @@ package day3
 
 import java.io.{BufferedInputStream, InputStream}
 import java.nio.charset.{Charset, StandardCharsets}
-import java.nio.file.{Path, Files, Paths}
+import java.nio.file.{Files, Path, Paths}
 import java.text.{CharacterIterator, StringCharacterIterator}
+import java.util.stream.IntStream
 import javax.xml.parsers.DocumentBuilderFactory
 
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
 
-import scala.xml.XML
+import scala.xml.{Elem, XML}
 
 /**
   * @author ynupc
@@ -30,6 +31,7 @@ class Day3TestSuite extends AssertionsForJUnit {
     //java.nio.channels.ClosedChannelException
     val doc = db.parse(inputStreamWithoutBOM)
     val rootElemInDOM = doc.getDocumentElement
+    inputStreamWithoutBOM.close()
 
     assert(rootElemInDOM.getTextContent == "utf8 with bom")
   }
@@ -39,7 +41,8 @@ class Day3TestSuite extends AssertionsForJUnit {
     val inputStreamWithBOM: InputStream = Files.newInputStream(input)
 
     //scala.xml
-    val rootElemInScalaXML = XML.load(inputStreamWithBOM)
+    val rootElemInScalaXML: Elem = XML.load(inputStreamWithBOM)
+    inputStreamWithBOM.close()
 
     assert(rootElemInScalaXML.text == "utf8 with bom")
   }
@@ -347,9 +350,11 @@ class Day3TestSuite extends AssertionsForJUnit {
   @Test
   def testCharSequenceToCharArray(): Unit = {
     val charSequence: CharSequence = "𠮷野家"
-    val charArray: Array[Char] = charSequence.chars.toArray.map(_.toChar)
+    val chars: IntStream = charSequence.chars
+    val charArray: Array[Char] = chars.toArray.map(_.toChar)
     //NullPointerException:
     //charSequenceがnullである場合発生
+    chars.close()
 
     assert(charArray.length == 4)
     assert(charArray.head == 0xD842)
@@ -375,9 +380,11 @@ class Day3TestSuite extends AssertionsForJUnit {
   @Test
   def testStringToCharArray2(): Unit = {
     val str: String = "𠮷野家"
-    val charArray: Array[Char] = str.chars.toArray.map(_.toChar)
+    val chars: IntStream = str.chars
+    val charArray: Array[Char] = chars.toArray.map(_.toChar)
     //NullPointerException:
     //strがnullである場合発生
+    chars.close()
 
     assert(charArray.length == 4)
     assert(charArray.head == 0xD842)
@@ -422,8 +429,14 @@ class Day3TestSuite extends AssertionsForJUnit {
     val numOfCharsOfStrWithSurrogatePair1: Int = strWithSurrogatePair.length
     val numOfCharsOfStrWithoutSurrogatePair1: Int = strWithoutSurrogatePair.length
 
-    val numOfCharsOfStrWithSurrogatePair2: Long = strWithSurrogatePair.chars.count
-    val numOfCharsOfStrWithoutSurrogatePair2: Long = strWithoutSurrogatePair.chars.count
+    val charsWithSurrogatePair: IntStream = strWithSurrogatePair.chars
+    val charsWithoutSurrogatePair: IntStream = strWithoutSurrogatePair.chars
+
+    val numOfCharsOfStrWithSurrogatePair2: Long = charsWithSurrogatePair.count
+    val numOfCharsOfStrWithoutSurrogatePair2: Long = charsWithoutSurrogatePair.count
+
+    charsWithSurrogatePair.close()
+    charsWithoutSurrogatePair.close()
 
     assert(numOfCharsOfStrWithSurrogatePair1 == numOfCharsOfStrWithSurrogatePair2)
     assert(numOfCharsOfStrWithoutSurrogatePair1 == numOfCharsOfStrWithoutSurrogatePair2)
@@ -437,8 +450,14 @@ class Day3TestSuite extends AssertionsForJUnit {
     val numOfCharactersOfStrWithSurrogatePair1: Int = strWithSurrogatePair.codePointCount(0, strWithSurrogatePair.length)
     val numOfCharactersOfStrWithoutSurrogatePair1: Int = strWithoutSurrogatePair.codePointCount(0, strWithoutSurrogatePair.length)
 
-    val numOfCharactersOfStrWithSurrogatePair2: Long = strWithSurrogatePair.codePoints.count
-    val numOfCharactersOfStrWithoutSurrogatePair2: Long = strWithoutSurrogatePair.codePoints.count
+    val codePointsWithSurrogatePair: IntStream = strWithSurrogatePair.codePoints
+    val codePointsWithoutSurrogatePair: IntStream = strWithoutSurrogatePair.codePoints
+
+    val numOfCharactersOfStrWithSurrogatePair2: Long = codePointsWithSurrogatePair.count
+    val numOfCharactersOfStrWithoutSurrogatePair2: Long = codePointsWithoutSurrogatePair.count
+
+    codePointsWithSurrogatePair.close()
+    codePointsWithoutSurrogatePair.close()
 
     assert(numOfCharactersOfStrWithSurrogatePair1 == numOfCharactersOfStrWithSurrogatePair2)
     assert(numOfCharactersOfStrWithoutSurrogatePair1 == numOfCharactersOfStrWithoutSurrogatePair2)
@@ -455,9 +474,11 @@ class Day3TestSuite extends AssertionsForJUnit {
   @Test
   def testCharSequenceToCodePointArray(): Unit = {
     val charSequence: CharSequence = "𠮷野家"
-    val codePointArray: Array[Int] = charSequence.codePoints().toArray
+    val codePoints: IntStream = charSequence.codePoints
+    val codePointArray: Array[Int] = codePoints.toArray
     //NullPointerException:
     //charSequenceがnullである場合発生
+    codePoints.close()
 
     assert(codePointArray.length == 3)
     assert(codePointArray.head == 0x20BB7)
@@ -468,9 +489,11 @@ class Day3TestSuite extends AssertionsForJUnit {
   @Test
   def testStringToCodePointArray(): Unit = {
     val str: String = "𠮷野家"
-    val codePointArray: Array[Int] = str.codePoints().toArray
+    val codePoints: IntStream = str.codePoints
+    val codePointArray: Array[Int] = codePoints.toArray
     //NullPointerException:
     //strがnullである場合発生
+    codePoints.close()
 
     assert(codePointArray.length == 3)
     assert(codePointArray.head == 0x20BB7)
@@ -595,7 +618,9 @@ class Day3TestSuite extends AssertionsForJUnit {
   def testStringToCharLevelIntStreamForwardIterator(): Unit = {
     val str: String = "𠮷野家"
     val charArray: Array[Char] = str.toCharArray
-    val iterator = str.chars.iterator
+    val chars: IntStream = str.chars
+    val iterator = chars.iterator
+    chars.close()
     var counter = 0
     while (iterator.hasNext) {
       val char: Char = iterator.nextInt.toChar
@@ -612,7 +637,9 @@ class Day3TestSuite extends AssertionsForJUnit {
   def testStringToCharLevelIntStreamBackwardIterator(): Unit = {
     val str: String = "𠮷野家"
     val charArray: Array[Char] = str.toCharArray.reverse
-    val iterator = str.chars.toArray.reverseIterator
+    val chars: IntStream = str.chars
+    val iterator = chars.toArray.reverseIterator
+    chars.close()
     var counter = 0
     while (iterator.hasNext) {
       val char: Char = iterator.next.toChar
@@ -629,7 +656,9 @@ class Day3TestSuite extends AssertionsForJUnit {
   def testStringToCodePointLevelIntStreamForwardIterator(): Unit = {
     val str: String = "𠮷野家"
     val codePointArray: Array[Int] = toCodePoints(str)
-    val iterator = str.codePoints.iterator
+    val codePoints: IntStream = str.codePoints
+    val iterator = codePoints.iterator
+    codePoints.close()
     var counter = 0
     while (iterator.hasNext) {
       val codePoint: Int = iterator.nextInt
@@ -646,7 +675,9 @@ class Day3TestSuite extends AssertionsForJUnit {
   def testStringToCodePointLevelIntStreamBackwardIterator(): Unit = {
     val str: String = "𠮷野家"
     val codePointArray: Array[Int] = toCodePoints(str).reverse
-    val iterator = str.codePoints.toArray.reverseIterator
+    val codePoints: IntStream = str.codePoints
+    val iterator = codePoints.toArray.reverseIterator
+    codePoints.close()
     var counter = 0
     while (iterator.hasNext) {
       val codePoint: Int = iterator.next
