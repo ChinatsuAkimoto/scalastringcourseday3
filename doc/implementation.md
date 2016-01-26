@@ -350,7 +350,7 @@ CharSequenceインターフェースを実装しているオブジェクトはto
 <img src="../image/string_course.017.jpeg" width="500px"><br>
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトとChar配列との相互変換について説明します。
 <h4>2.6.1　CharSequenceからChar配列 (Array[Char])への変換</h4>
-CharSequenceインターフェースを実装しているオブジェクトからChar配列へは、CharSequenceインターフェースのcharsメソッド（Java 8以降）で<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>を介して変換することができます。IntStreamについては、<a href="#コラムIntStream">コラム：IntStream</a>を参照してください。
+CharSequenceインターフェースを実装しているオブジェクトからChar配列へは、CharSequenceインターフェースのcharsメソッド（Java 8以降）で<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>を介して変換することができます。IntStreamについては、<a href="#コラムintstream">コラム：IntStream</a>を参照してください。
 ```scala
   @Test
   def testCharSequenceToCharArray(): Unit = {
