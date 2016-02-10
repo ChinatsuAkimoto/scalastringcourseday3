@@ -506,7 +506,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
   @Test
   def testCharSequenceToCodePointArray(): Unit = {
     val charSequence: CharSequence = "𠮷野家"
-    val codePointArray: Array[Int] = charSequence.codePoints().toArray
+    val codePointArray: Array[Int] = charSequence.codePoints.toArray
     //NullPointerException:
     //charSequenceがnullである場合発生
 
@@ -520,7 +520,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
   @Test
   def testStringToCodePointArray(): Unit = {
     val str: String = "𠮷野家"
-    val codePointArray: Array[Int] = str.codePoints().toArray
+    val codePointArray: Array[Int] = str.codePoints.toArray
     //NullPointerException:
     //strがnullである場合発生
 
