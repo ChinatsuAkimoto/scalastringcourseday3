@@ -447,7 +447,7 @@ Char数とコードポイント数はStringオブジェクト内にサロゲー�
 一方で、"吉野家"の"吉"はサロゲートペアではありません。従って、Char数は3、コードポイント数は3、サロゲートペア数は0です。
 <h4>2.7.1　StringからChar数 (IntまたはLong)の取得</h4>
 <img src="../image/string_course.020.jpeg" width="500px"><br>
-Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。
+Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。String.lengthメソッドの方がIntStreamを経由するcharsメソッドを使った方法より高速です。
 ```scala
   @Test
   def testNumOfChars(): Unit = {
@@ -466,7 +466,7 @@ Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに�
 ```
 <h4>2.7.2　Stringからコードポイント数 (Int)の取得</h4>
 <img src="../image/string_course.021.jpeg" width="500px"><br>
-コードポイント数はString.codePointCountメソッドか、codePointsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。
+コードポイント数はcodePointCountメソッドか、codePointsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。codePointCountメソッドの方がIntStreamを経由するcodePointsメソッドを使った方法より高速です。
 ```scala
   @Test
   def testNumOfCharacters(): Unit = {
