@@ -4,6 +4,12 @@
 <img src="../image/string_course.008.jpeg" width="500px"><br>
 今日は、この表をインデックスとして使用し、メソッドを表す個々のリンクについて説明していきます。<br>
 <img src="../image/string_course.009.jpeg" width="500px"><br>
+ここではコードポイントとサロゲートペアに関する処理を詳細に学習しますが、その中でも次の３つは特に大切です。
+<ol>
+  <li>Stringから文字数（＝コードポイント数）を取得する方法、</li>
+  <li>Stringからコードポイント配列に変換する方法、</li>
+  <li>コードポイント配列からStringに変換する方法</li>
+</ol>
 ***
 <h3>2.1　サロゲートペア (Array[Char])とコードポイント (Int)の相互変換</h3>
 <img src="../image/string_course.010.jpeg" width="500px"><br>
