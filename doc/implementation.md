@@ -2,10 +2,11 @@
 
 <h2>2.　コードポイントとサロゲートペアの実装</h2>
 <img src="../image/string_course.008.jpeg" width="500px"><br>
-今日は、この表をインデックスとして使用し、メソッドを表す個々のリンクについて説明していきます。
+今日は、この表をインデックスとして使用し、メソッドを表す個々のリンクについて説明していきます。<br>
+<img src="../image/string_course.009.jpeg" width="500px"><br>
 ***
 <h3>2.1　サロゲートペア (Array[Char])とコードポイント (Int)の相互変換</h3>
-<img src="../image/string_course.009.jpeg" width="500px"><br>
+<img src="../image/string_course.010.jpeg" width="500px"><br>
 コードポイントとサロゲートペアの変換方法について説明します。
 <h4>2.1.1　サロゲートペア (Array[Char])からコードポイント (Int)への変換</h4>
 Character.toCodePointメソッドがサロゲートペアからコードポイントへの変換メソッドです。
@@ -66,7 +67,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 ```
 ***
 <h3>2.2　コードポイント (Int)からChar数 (Int)の取得</h3>
-<img src="../image/string_course.010.jpeg" width="500px"><br>
+<img src="../image/string_course.011.jpeg" width="500px"><br>
 コードポイントがいくつのCharで表されるのかを取得する方法について説明します。まずは、先ほどのように一度Charの配列に変換してしまう方法があります。
 <br>
 ```scala
@@ -84,7 +85,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
     }
   }
 ```
-<img src="../image/string_course.011.jpeg" width="500px"><br>
+<img src="../image/string_course.012.jpeg" width="500px"><br>
 次に、Character.charCountメソッドを使用して、直接コードポイントからいくつのCharで表されるのかを取得することができます。
 ```scala
   @Test
@@ -125,7 +126,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 ```
 ***
 <h3>2.3　コードポイント (Int)から上位サロゲート (Char)や下位サロゲート (Char)の取得</h3>
-<img src="../image/string_course.012.jpeg" width="500px"><br>
+<img src="../image/string_course.013.jpeg" width="500px"><br>
 <h4>2.3.1　コードポイント (Int)から上位サロゲート (Char)の取得</h4>
 コードポイントから上位サロゲートをCharacter.highSurrogateメソッドで取得できます。
 ```scala
@@ -162,11 +163,11 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 ```
 ***
 <h3>2.4　CharSequenceやStringやChar配列 (Array[Char])からコードポイント (Int)の取得</h3>
-<img src="../image/string_course.013.jpeg" width="500px"><br>
+<img src="../image/string_course.014.jpeg" width="500px"><br>
 CharSequenceインターフェースを実装するオブジェクト、Stringオブジェクト、Char配列からコードポイントにcodePointAt/codePointBeforeメソッドを使用して変換できます。
 codePointAtは順方向、codePointBeforeは逆方向に解析します。
 <h4>2.4.1　指定インデックス (Int)にある文字のコードポイント (Int)の取得</h4>
-<img src="../image/string_course.014.jpeg" width="500px"><br>
+<img src="../image/string_course.015.jpeg" width="500px"><br>
 CharSequenceインターフェースを実装するオブジェクト、Stringオブジェクト、Char配列のどのメソッドを使用するのが良いかについてですが、基本的にどれも内部でChar配列を扱うため処理速度にあまり違いはありません。高速化しようとlower levelで扱うためにStringをtoCharArrayメソッドでChar配列に変換してからCharacter.codePointAt/codePointBeforeを使うとtoCharArrayメソッドの処理分だけ遅くなります。<br>
 <h4>2.4.2　順方向に解析しコードポイント (Int)を取得</h4>
 Char配列からコードポイントを順方向にCharacter.codePointAtメソッドで変換できます。
@@ -315,11 +316,11 @@ Stringオブジェクトからコードポイントに逆方向にString.codePoi
   }
 ```
 <h4>2.4.4　サロゲートペアに対する挙動</h4>
-<img src="../image/string_course.015.jpeg" width="500px"><br>
+<img src="../image/string_course.016.jpeg" width="500px"><br>
 このスライドは、codePointAt/codePointBeforeメソッドが、サロゲートペアを壊すように解析を開始・終了した場合の挙動を示します。サロゲートペアが途中で切れてしまった場合にはサロゲートペアのコードポイントは取得できないため、観測されているサロゲートのコードポイントを返します。
 ***
 <h3>2.5　CharSequenceとStringの相互変換</h3>
-<img src="../image/string_course.016.jpeg" width="500px"><br>
+<img src="../image/string_course.017.jpeg" width="500px"><br>
 CharSequenceインターフェースを実装したオブジェクトとStringオブジェクトとの間の相互変換について説明します。
 <h4>2.5.1　StringからCharSequenceへの変換</h4>
 StringオブジェクトはCharSequenceインターフェースを実装しているためStringオブジェクトからCharSequenceへはキャストすることができます。
@@ -347,7 +348,7 @@ CharSequenceインターフェースを実装しているオブジェクトはto
 ```
 ***
 <h3>2.6　CharSequenceやStringとChar配列 (Array[Char])の相互変換</h3>
-<img src="../image/string_course.017.jpeg" width="500px"><br>
+<img src="../image/string_course.018.jpeg" width="500px"><br>
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトとChar配列との相互変換について説明します。
 <h4>2.6.1　CharSequenceからChar配列 (Array[Char])への変換</h4>
 CharSequenceインターフェースを実装しているオブジェクトからChar配列へは、CharSequenceインターフェースのcharsメソッド（Java 8以降）で<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>を介して変換することができます。IntStreamについては、<a href="#コラムintstream">コラム：IntStream</a>を参照してください。
@@ -412,7 +413,7 @@ Char配列からStringオブジェクトへは、Stringクラスのコンスト�
 ```
 ***
 <h3>2.7　StringからChar数 (IntまたはLong)やコードポイント数 (IntまたはLong)の取得</h3>
-<img src="../image/string_course.018.jpeg" width="500px"><br>
+<img src="../image/string_course.019.jpeg" width="500px"><br>
 StringオブジェクトからChar数とコードポイント数の取得方法を説明します。
 Char数とコードポイント数はStringオブジェクト内にサロゲートペアが存在しない場合は一致します。しかし、サロゲートペアが含まれている場合には、Char数よりコードポイント数が少なくなります。Char数からコードポイント数を引いた数がStringオブジェクト内に存在するサロゲートペアの数です。
 ```scala
@@ -439,7 +440,7 @@ Char数とコードポイント数はStringオブジェクト内にサロゲー�
 "𠮷野家"の"𠮷"はサロゲートペアです。従って、Char数は4、コードポイント数は3、サロゲートペア数は1です。
 一方で、"吉野家"の"吉"はサロゲートペアではありません。従って、Char数は3、コードポイント数は3、サロゲートペア数は0です。
 <h4>2.7.1　StringからChar数 (IntまたはLong)の取得</h4>
-<img src="../image/string_course.019.jpeg" width="500px"><br>
+<img src="../image/string_course.020.jpeg" width="500px"><br>
 Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。
 ```scala
   @Test
@@ -458,7 +459,7 @@ Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに�
   }
 ```
 <h4>2.7.2　Stringからコードポイント数 (Int)の取得</h4>
-<img src="../image/string_course.020.jpeg" width="500px"><br>
+<img src="../image/string_course.021.jpeg" width="500px"><br>
 コードポイント数はString.codePointCountメソッドか、codePointsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。
 ```scala
   @Test
@@ -478,10 +479,10 @@ Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに�
 ```
 ***
 <h3>2.8　CharSequenceやStringとコードポイント配列 (Array[Int])の相互変換</h3>
-<img src="../image/string_course.021.jpeg" width="500px"><br>
+<img src="../image/string_course.022.jpeg" width="500px"><br>
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトとコードポイント配列との間の相互変換について説明します。
 <h4>2.8.1　コードポイント配列 (Array[Int])からStringへの変換</h4>
-<img src="../image/string_course.022.jpeg" width="500px"><br>
+<img src="../image/string_course.023.jpeg" width="500px"><br>
 コードポイント配列からStringオブジェクトへはStringクラスのコンストラクタで変換できます。コードポイント配列からCharSequenceへは一度Stringクラスのコンストラクトを介してStringオブジェクトに変換し、CharSequenceにキャストすることで変換可能です。
 ```scala
   @Test
@@ -493,7 +494,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
   }
 ```
 <h4>2.8.2　CharSequenceやStringからコードポイント配列 (Array[Int])への変換</h4>
-<img src="../image/string_course.023.jpeg" width="500px"><br>
+<img src="../image/string_course.024.jpeg" width="500px"><br>
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトからコードポイント配列へはCharSequenceインターフェースのcodePointsメソッド（Java 8以降）でIntStreamを取得し、それをtoArrayメソッドで配列に変換できます。
 ```scala
   @Test
@@ -525,7 +526,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
 ```
 ***
 <h3>2.9　コードポイント数 (Int)だけ移動した位置のインデックス (Int)の取得</h3>
-<img src="../image/string_course.024.jpeg" width="500px"><br>
+<img src="../image/string_course.025.jpeg" width="500px"><br>
 codePointAt/codePointBeforeメソッドと同様に、CharacterクラスはChar配列、CharSequenceインターフェースを実装するオブジェクトに対して、Stringクラスは自身に対してoffsetByCodePointsメソッドを持っています。
 ```scala
   @Test
@@ -602,7 +603,7 @@ codePointAt/codePointBeforeメソッドと同様に、CharacterクラスはChar�
 ***
 <h3>2.10　Stringからイテレータの生成</h3>
 <h4>2.10.1　StringCharacterIteratorによるChar単位のイテレータ</h4>
-<img src="../image/string_course.025.jpeg" width="500px"><br>
+<img src="../image/string_course.026.jpeg" width="500px"><br>
 StringCharacterIteratorは、コンストラクタにStringオブジェクトを与えることでChar単位でイテレートすることができます。StringCharacterIteratorが実装するCharacterIteratorインターフェースは順方向から解析するためのfirstメソッドとnextメソッド、そして逆方向から解析するためのlastメソッドとpreviousメソッドを保持しています。CharacterIterator.DONEでイテレータの終了を判定します。CharacterIterator.DONEはUnicode上で文字が割り当てられていない<a href="http://www.fileformat.info/info/unicode/char/ffff/index.htm" target="_blank">U+FFFF</a>です。
 サンプルコードは、サロゲートペアを発見したら幽霊文字の「彁」に置き換える（呪詛的な）処理です。
 ```scala
@@ -732,11 +733,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
   }
 ```
 ***
-<h3>2.11　コードポイントとサロゲートペアに関する特に重要な変換</h3>
-<img src="../image/string_course.026.jpeg" width="500px"><br>
-サロゲートペアを考慮して文字列をコードポイントで扱うためには、最低でもこのスライドで示したリンクは覚えて欲しいです。
-***
-<h3>2.12　Java 7以前のStringからコードポイント配列 (Array[Int])への変換</h3>
+<h3>2.11　Java 7以前のStringからコードポイント配列 (Array[Int])への変換</h3>
 <img src="../image/string_course.027.jpeg" width="500px"><br>
 これまでに説明したStringオブジェクトからコードポイント配列への変換は、Java 8で初めて作られたCharSequenceインターフェースのtoCodePointsメソッドによって可能となります。Java 7以前では、StringオブジェクトからどのようにするとCode Point配列が得られるのでしょうか。これに関するIBMのMasahiko Maederaさんが英語と日本語でJava言語で技術文書を公開しています。
 <ul>
