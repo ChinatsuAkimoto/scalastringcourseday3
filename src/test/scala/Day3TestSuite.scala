@@ -1,5 +1,3 @@
-package day3
-
 import java.io.{BufferedInputStream, InputStream}
 import java.nio.charset.{Charset, StandardCharsets}
 import java.nio.file.{Files, Path, Paths}
