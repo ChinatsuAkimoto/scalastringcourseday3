@@ -7,7 +7,8 @@ import javax.xml.parsers.{DocumentBuilder, DocumentBuilderFactory}
 
 import org.junit.Test
 import org.scalatest.junit.AssertionsForJUnit
-import org.w3c.dom.{Element, Document}
+import org.w3c.dom.{Document, Element}
+import util.Config
 
 import scala.xml.{Elem, XML}
 
@@ -16,7 +17,7 @@ import scala.xml.{Elem, XML}
   *         Created on 2015/11/25
   */
 class Day3TestSuite extends AssertionsForJUnit {
-  private val input: Path = Paths.get("..", "..", "src", "test", "resources", "day3", "utf8_with_bom.xml")
+  private val input: Path = Paths.get(Config.resourcesDir, "utf8_with_bom.xml").toAbsolutePath
 
   @Test
   def testW3CDOMForUTF8BOM(): Unit = {
