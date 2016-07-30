@@ -741,7 +741,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
 ***
 <h3>2.11　Java 7以前のStringからコードポイント配列 (Array[Int])への変換</h3>
 <img src="../image/string_course.027.jpeg" width="500px"><br>
-これまでに説明したStringオブジェクトからコードポイント配列への変換は、Java 8で初めて作られたCharSequenceインターフェースのtoCodePointsメソッドによって可能となります。Java 7以前では、StringオブジェクトからどのようにするとCode Point配列が得られるのでしょうか。これに関するIBMのMasahiko Maederaさんが英語と日本語でJava言語で技術文書を公開しています。
+これまでに説明したStringオブジェクトからコードポイント配列への変換は、Java 8で初めて作られたCharSequenceインターフェースのtoCodePointsメソッドによって可能となります。Java 7以前では、Stringオブジェクトからどのようにするとコードポイント配列が得られるのでしょうか。これに関するIBMのMasahiko Maederaさんが英語と日本語でJava言語で技術文書を公開しています。
 <ul>
 <li><a href="http://www.ibm.com/developerworks/library/j-unicode/" target="_blank">http://www.ibm.com/developerworks/library/j-unicode/</a>（英語）
 <li><a href="https://www.ibm.com/developerworks/jp/java/library/j-unicode/" target="_blank">https://www.ibm.com/developerworks/jp/java/library/j-unicode/</a>（日本語）
