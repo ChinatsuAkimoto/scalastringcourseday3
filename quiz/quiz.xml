@@ -74,16 +74,16 @@
       type="ma">
     <choices>
       <choice answer="true">string.codePoints.toArray map {cp => new String(Array(cp), 0, 1)}</choice>
-      <choice feedback="Charを単位としたString配列を返します。">string.toCharArray map {_.toString}</choice>
+      <choice feedback="Charを単位としたString配列を返します。">string.toCharArray.map(_.toString)</choice>
       <choice feedback="コードポイントを単位としたInt配列を返します。">string.codePoints.toArray</choice>
-      <choice feedback="Charを単位としたString配列を返します。">string.chars.toArray map {_.toChar.toString}</choice>
+      <choice feedback="Charを単位としたString配列を返します。">string.chars.toArray.map(_.toChar.toString)</choice>
       <choice feedback="Charを単位としたChar配列を返します。">string.toCharArray</choice>
       <choice feedback="Charを単位としたIntStreamを返します。">string.chars</choice>
     </choices>
   </question>
   <!--Day3-6-->
   <question
-      statement=""
+      statement="コードポイント配列からStringへの変換を選べ。"
       feedback_for_correct_answer=""
       feedback_for_incorrect_answer="">
       type="ma">
@@ -98,47 +98,44 @@
   </question>
   <!--Day3-7-->
   <question
-      statement=""
-      feedback_for_correct_answer=""
-      feedback_for_incorrect_answer="">
+      statement="&quot;𠮷野家&quot;のChar数はいくつか選べ。"
+      feedback_for_correct_answer="&quot;𠮷&quot;がサロゲートペアなのでChar数２なので全体では４です。"
+      feedback_for_incorrect_answer="&quot;𠮷&quot;はChar２つで表されるサロゲートペアです。。">
       type="ma">
     <choices>
-      <choice answer="true"></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
+      <choice answer="true">4</choice>
+      <choice feedback="">3</choice>
+      <choice feedback="">2</choice>
+      <choice feedback="">1</choice>
+      <choice feedback="">0</choice>
     </choices>
   </question>
   <!--Day3-8-->
   <question
-      statement=""
-      feedback_for_correct_answer=""
-      feedback_for_incorrect_answer="">
+      statement="&quot;𠮷野家&quot;のコードポイント数はいくつか選べ。"
+      feedback_for_correct_answer="コードポイント数は文字数なので３です。"
+      feedback_for_incorrect_answer="コードポイント数は文字数です。">
       type="ma">
     <choices>
-      <choice answer="true"></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
+      <choice answer="true">3</choice>
+      <choice feedback="">4</choice>
+      <choice feedback="">2</choice>
+      <choice feedback="">1</choice>
+      <choice feedback="">0</choice>
     </choices>
   </question>
  <!--Day3-9-->
   <question
-      statement=""
-      feedback_for_correct_answer=""
-      feedback_for_incorrect_answer="">
+      statement="&quot;𠮷野家&quot;のサロゲートペア数はいくつか選べ。"
+      feedback_for_correct_answer="&quot;𠮷&quot;がサロゲートペアなので１です。"
+      feedback_for_incorrect_answer="&quot;𠮷&quot;のみサロゲートペアです。">
       type="ma">
     <choices>
-      <choice answer="true"></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
+      <choice answer="true">1</choice>
+      <choice feedback="">4</choice>
+      <choice feedback="">3</choice>
+      <choice feedback="">2</choice>
+      <choice feedback="">0</choice>
     </choices>
   </question>
  <!--Day3-10-->
