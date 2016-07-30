@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <quiz
-    messages_intro="「Day 3 Code PointとSurrogate Pair」"
-    title="Day 3 Code PointとSurrogate Pair"
+    messages_intro="「Day 3 コードポイントとサロゲートペア」"
+    title="Day 3 コードポイントとサロゲートペア"
     shuffle_questions="true"
     shuffle_choices="true"
     show_correct_answer="false"
