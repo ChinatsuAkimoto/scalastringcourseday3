@@ -127,8 +127,8 @@
  <!--Day3-9-->
   <question
       statement="&quot;𠮷野家&quot;のサロゲートペア数はいくつか選べ。"
-      feedback_for_correct_answer="&quot;𠮷&quot;がサロゲートペアなので１です。"
-      feedback_for_incorrect_answer="&quot;𠮷&quot;のみサロゲートペアです。">
+      feedback_for_correct_answer="&quot;𠮷&quot;のみがサロゲートペアなので１です。"
+      feedback_for_incorrect_answer="&quot;𠮷&quot;のみがサロゲートペアです。">
       type="ma">
     <choices>
       <choice answer="true">1</choice>
@@ -140,15 +140,15 @@
   </question>
  <!--Day3-10-->
   <question
-      statement=""
-      feedback_for_correct_answer=""
+      statement="サロゲート（上位サロゲートと下位サロゲート）のコードポイントの範囲を選べ。"
+      feedback_for_correct_answer="上位サロゲートはU+D800からU+DBFFまでの10 bits、下位サロゲートはU+DC00からU+DFFFまでの10 bitsです。U+10000からU+10FFFまでの20 bitsの追加領域の文字を上位・下位のサロゲートペアで表現します。"
       feedback_for_incorrect_answer="">
       type="ma">
     <choices>
-      <choice answer="true"></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
+      <choice answer="true">U+D800からU+DFFFまで</choice>
+      <choice feedback="上位サロゲートの範囲（容量10 bits）です。U+10000からU+10FFFまでの20 bitsの追加領域と同等の容量を持つにはサロゲート領域は上位・下位合わせて20 bits必要です。">U+D800からU+DBFFまで</choice>
+      <choice feedback="下位サロゲートの範囲（容量10 bits）です。U+10000からU+10FFFまでの20 bitsの追加領域と同等の容量を持つにはサロゲート領域は上位・下位合わせて20 bits必要です。">U+DC00からU+DFFFまで</choice>
+      <choice feedback="追加領域の範囲です。">U+10000からU+10FFFまで</choice>
     </choices>
   </question>
 </quiz>
