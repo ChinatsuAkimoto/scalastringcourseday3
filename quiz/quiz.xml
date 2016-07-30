@@ -68,17 +68,17 @@
   </question>
   <!--Day3-5-->
   <question
-      statement=""
-      feedback_for_correct_answer=""
-      feedback_for_incorrect_answer="">
+      statement="Stringから文字を単位としたString配列への変換を選べ。"
+      feedback_for_correct_answer="文字を単位の配列を作成するために一度コードポイント配列に変換したのちに各コードポイントをStringに変換します。"
+      feedback_for_incorrect_answer="文字を単位の配列を作成するために一度コードポイント配列に変換したのちに各コードポイントをStringに変換します。">
       type="ma">
     <choices>
-      <choice answer="true"></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
-      <choice feedback=""></choice>
+      <choice answer="true">string.codePoints.toArray map {cp => cp.toString}</choice>
+      <choice feedback="">string.toCharArray map {char => char.toString}</choice>
+      <choice feedback="">string.codePoints.toArray</choice>
+      <choice feedback="">string.chars.toArray map {char => char.toString}</choice>
+      <choice feedback="">string.toCharArray</choice>
+      <choice feedback="">string.chars</choice>
     </choices>
   </question>
   <!--Day3-6-->
