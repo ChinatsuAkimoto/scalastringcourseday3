@@ -73,12 +73,12 @@
       feedback_for_incorrect_answer="文字を単位の配列を作成するために一度コードポイント配列に変換したのちに各コードポイントをStringに変換します。">
       type="ma">
     <choices>
-      <choice answer="true">string.codePoints.toArray map {cp => cp.toString}</choice>
-      <choice feedback="">string.toCharArray map {char => char.toString}</choice>
-      <choice feedback="">string.codePoints.toArray</choice>
-      <choice feedback="">string.chars.toArray map {char => char.toString}</choice>
-      <choice feedback="">string.toCharArray</choice>
-      <choice feedback="">string.chars</choice>
+      <choice answer="true">string.codePoints.toArray map {cp => new String(Array(cp), 0, 1)}</choice>
+      <choice feedback="Charを単位としたString配列を返します。">string.toCharArray map {_.toString}</choice>
+      <choice feedback="コードポイントを単位としたInt配列を返します。">string.codePoints.toArray</choice>
+      <choice feedback="Charを単位としたString配列を返します。">string.chars.toArray map {_.toChar.toString}</choice>
+      <choice feedback="Charを単位としたChar配列を返します。">string.toCharArray</choice>
+      <choice feedback="Charを単位としたIntStreamを返します。">string.chars</choice>
     </choices>
   </question>
   <!--Day3-6-->
