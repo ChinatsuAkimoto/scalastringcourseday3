@@ -84,7 +84,7 @@
   <!--Day3-6-->
   <question
       statement="コードポイント配列（Int型の配列）codePointArrayからそれが意味する文字列を持つStringへの変換を選べ。"
-      feedback_for_correct_answer="Stringクラスのコンストラクタにより変換できます。第二・第三引数にStringに変換する範囲をインデックスとオフセットで与えます。"
+      feedback_for_correct_answer="Stringクラスのコンストラクタにより変換できます。第二・第三引数にStringに変換する範囲をそれぞれインデックスとオフセットで与えます。"
       feedback_for_incorrect_answer="Stringクラスのコンストラクタにより変換できます。第二・第三引数が必要です。">
       type="ma">
     <choices>
