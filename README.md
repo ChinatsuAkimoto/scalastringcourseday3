@@ -10,4 +10,4 @@
 <h2>リポジトリ（サンプルコード）</h2>
 <a href="https://github.com/ynupc/scalastringcourseday3" target="_blank">https://github.com/ynupc/scalastringcourseday3</a>
 <h2>クイズ</h2>
-<a href="http://ynupc.github.io/quiz/scalastringcourse/day3/" target="_blank">http://ynupc.github.io/quiz/scalastringcourse/day3/</a>  
+<a href="http://ynupc.github.io/course/scalastringcourse/day3/" target="_blank">http://ynupc.github.io/quiz/scalastringcourse/day3/</a>  
