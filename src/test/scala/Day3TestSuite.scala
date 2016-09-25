@@ -1,6 +1,6 @@
 import java.io.{BufferedInputStream, InputStream}
 import java.nio.charset.{Charset, StandardCharsets}
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{Files, Path}
 import java.text.{CharacterIterator, StringCharacterIterator}
 import java.util.stream.IntStream
 import javax.xml.parsers.{DocumentBuilder, DocumentBuilderFactory}

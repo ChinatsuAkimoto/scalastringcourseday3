@@ -29,12 +29,12 @@ object Config {
     }
   }
 
-  def resourceFile(filename: String): Path = {
-    val file: File = Paths.get(resourcesDir, filename).toAbsolutePath.toFile
+  def resourceFile(filename: String*): Path = {
+    val file: File = Paths.get(resourcesDir, filename: _*).toAbsolutePath.toFile
     if (file.canRead && file.isFile) {
       file.toPath
     } else {
-      Paths.get(defaultPath, filename).toAbsolutePath
+      Paths.get(defaultPath, filename: _*).toAbsolutePath
     }
   }
 }
