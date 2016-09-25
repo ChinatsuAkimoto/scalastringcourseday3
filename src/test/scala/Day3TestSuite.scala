@@ -17,7 +17,7 @@ import scala.xml.{Elem, XML}
   *         Created on 2015/11/25
   */
 class Day3TestSuite extends AssertionsForJUnit {
-  private val input: Path = Paths.get(Config.resourcesDir, "utf8_with_bom.xml").toAbsolutePath
+  private val input: Path = Config.resourceFile("utf8_with_bom.xml")
 
   @Test
   def testW3CDOMForUTF8BOM(): Unit = {
