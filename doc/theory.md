@@ -50,8 +50,9 @@ UTF-8でのBOMはビッグエンディアンやリトルエンディアンのよ
 さらにプログラム上からBOM付きのUTF-8のファイルを読み込もうとするとExceptionが発生する場合があるため、一般的にはBOM無しのUTF-8で保存することが好ましいです。
 一方で、Windowsのメモ帳（NotePad）でUTF-8で保存するとBOMが自動付加されることなどエディタのBOMの自動付与の問題や、加えてプロジェクトの他のメンバがBOMについて疎いこと、あるいはプロジェクトの他のメンバの性格が悪いことなどが原因で気がつかない内にUTF-8のファイルにBOMが付与されていることがあります。
 そこで、UTF-8のBOMをファイルから削除する方法を２通り紹介します。
-<h4>（１）<a href="https://ja.wikipedia.org/wiki/Vim" target="_blank">Vim</a>によるUTF-8のBOMの手動削除</h4>
-UTF-8のBOMはVimをバイナリモードで確認し手動で除去できます。
+<h4>（１）バイナリエディタによるUTF-8のBOMの手動削除</h4>
+UTF-8のBOMはバイナリエディタで確認し手動で除去できます。
+ここでは、バイナリエディタの例として<a href="https://ja.wikipedia.org/wiki/Vim" target="_blank">Vim</a>をバイナリモードで使用します。
 ```bash
 $ vi -b src/test/resources/day3/utf8_with_bom.xml 
 ```
