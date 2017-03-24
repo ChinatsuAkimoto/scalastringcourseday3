@@ -16,6 +16,7 @@
 コードポイントとサロゲートペアの変換方法について説明します。
 <h4>2.1.1　サロゲートペア (Array[Char])からコードポイント (Int)への変換</h4>
 Character.toCodePointメソッドがサロゲートペアからコードポイントへの変換メソッドです。
+
 ```scala
   @Test
   def testSurrogatePairToCodePoint(): Unit = {
@@ -32,6 +33,7 @@ Character.toCodePointメソッドがサロゲートペアからコードポイ�
 ```
 <h4>2.1.2　コードポイント (Int)からサロゲートペア (Array[Char])への変換</h4>
 Character.toCharsメソッドがコードポイントからサロゲートペアを表すChar配列、あるいはサロゲートペアで表されないCharを１つ含む配列への変換メソッドです。
+
 ```scala
   @Test
   def testCodePointToSurrogatePair1(): Unit = {
@@ -76,6 +78,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 <img src="../image/string_course.011.jpeg" width="500px"><br>
 コードポイントがいくつのCharで表されるのかを取得する方法について説明します。まずは、先ほどのように一度Charの配列に変換してしまう方法があります。
 <br>
+
 ```scala
   @Test
   def testCodePointToNumOfChars1(): Unit = {
@@ -93,6 +96,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 ```
 <img src="../image/string_course.012.jpeg" width="500px"><br>
 次に、Character.charCountメソッドを使用して、直接コードポイントからいくつのCharで表されるのかを取得することができます。
+
 ```scala
   @Test
   def testCodePointToNumOfChars2(): Unit = {
@@ -111,6 +115,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
   }
 ```
 最後に、コードポイントがBMP領域にあるのか追加領域にあるのかを調べることで、いくつのCharで表されるのかを取得することができます。
+
 ```scala
   @Test
   def testCodePointToNumOfChars3(): Unit = {
@@ -135,6 +140,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 <img src="../image/string_course.013.jpeg" width="500px"><br>
 <h4>2.3.1　コードポイント (Int)から上位サロゲート (Char)の取得</h4>
 コードポイントから上位サロゲートをCharacter.highSurrogateメソッドで取得できます。
+
 ```scala
   @Test
   def testCodePointToHighSurrogate(): Unit = {
@@ -152,6 +158,7 @@ Character.toCharsメソッドがコードポイントからサロゲートペア
 ```
 <h4>2.3.2　コードポイント (Int)から下位サロゲート (Char)の取得</h4>
 コードポイントから下位サロゲートをCharacter.lowSurrogateメソッドで取得できます。
+
 ```scala
   @Test
   def testCodePointToLowSurrogate(): Unit = {
@@ -177,6 +184,7 @@ codePointAtは順方向、codePointBeforeは逆方向に解析します。
 CharSequenceインターフェースを実装するオブジェクト、Stringオブジェクト、Char配列のどのメソッドを使用するのが良いかについてですが、基本的にどれも内部でChar配列を扱うため処理速度にあまり違いはありません。高速化しようとlower levelで扱うためにStringをtoCharArrayメソッドでChar配列に変換してからCharacter.codePointAt/codePointBeforeを使うとtoCharArrayメソッドの処理分だけ遅くなります。<br>
 <h4>2.4.2　順方向に解析しコードポイント (Int)を取得</h4>
 Char配列からコードポイントを順方向にCharacter.codePointAtメソッドで変換できます。
+
 ```scala
   @Test
   def testCharArrayElementToCodePointInForwardDirection1(): Unit = {
@@ -219,6 +227,7 @@ Char配列からコードポイントを順方向にCharacter.codePointAtメソ�
   }
 ```
 CharSequenceインターフェースを実装するオブジェクトからコードポイントに順方向にCharacter.codePointAtメソッドで変換できます。
+
 ```scala
   @Test
   def testCharSequenceToCodePointInForwardDirection(): Unit = {
@@ -234,6 +243,7 @@ CharSequenceインターフェースを実装するオブジェクトからコ�
   }
 ```
 Stringオブジェクトからコードポイントに順方向にString.codePointAtメソッドで変換できます。
+
 ```scala
   @Test
   def testStringToCodePointInForwardDirection(): Unit = {
@@ -250,6 +260,7 @@ Stringオブジェクトからコードポイントに順方向にString.codePoi
 ```
 <h4>2.4.3　逆方向に解析しコードポイント (Int)を取得</h4>
 Char配列からコードポイントに逆方向にCharacter.codePointBeforeメソッドで変換できます。
+
 ```scala
   @Test
   def testCharArrayElementToCodePointInBackwardDirection1(): Unit = {
@@ -292,6 +303,7 @@ Char配列からコードポイントに逆方向にCharacter.codePointBeforeメ
   }
 ```
 CharSequenceインターフェースを実装するオブジェクトからコードポイントに逆方向にCharacter.codePointBeforeメソッドで変換できます。
+
 ```scala
   @Test
   def testCharSequenceToCodePointInBackwardDirection(): Unit = {
@@ -307,6 +319,7 @@ CharSequenceインターフェースを実装するオブジェクトからコ�
   }
 ```
 Stringオブジェクトからコードポイントに逆方向にString.codePointBeforeメソッドで変換できます。
+
 ```scala
   @Test
   def testStringToCodePointInBackwardDirection(): Unit = {
@@ -341,6 +354,7 @@ StringオブジェクトはCharSequenceインターフェースを実装して�
 ```
 <h4>2.5.2　CharSequenceからStringへの変換</h4>
 CharSequenceインターフェースを実装しているオブジェクトはtoStringメソッドでStringオブジェクトに変換することができます。
+
 ```scala
   @Test
   def testCharSequenceToString(): Unit = {
@@ -358,6 +372,7 @@ CharSequenceインターフェースを実装しているオブジェクトはto
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトとChar配列との相互変換について説明します。
 <h4>2.6.1　CharSequenceからChar配列 (Array[Char])への変換</h4>
 CharSequenceインターフェースを実装しているオブジェクトからChar配列へは、CharSequenceインターフェースのcharsメソッド（Java 8以降）で<a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html" target="_blank">IntStream</a>を介して変換することができます。IntStreamについては、<a href="#コラムintstream">コラム：IntStream</a>を参照してください。
+
 ```scala
   @Test
   def testCharSequenceToCharArray(): Unit = {
@@ -375,6 +390,7 @@ CharSequenceインターフェースを実装しているオブジェクトか�
 ```
 <h4>2.6.2　StringからChar配列 (Array[Char])への変換</h4>
 StringオブジェクトからChar配列へ、toCharArrayメソッドを使用して変換できます。
+
 ```scala
   @Test
   def testStringToCharArray1(): Unit = {
@@ -391,6 +407,7 @@ StringオブジェクトからChar配列へ、toCharArrayメソッドを使用�
   }
 ```
 CharSequenceインターフェースを実装しているStringオブジェクトからChar配列へは、CharSequenceインターフェースのcharsメソッド（Java 8以降）でIntStreamを介して変換することができます。
+
 ```scala
   @Test
   def testStringToCharArray2(): Unit = {
@@ -408,6 +425,7 @@ CharSequenceインターフェースを実装しているStringオブジェク�
 ```
 <h4>2.6.3　Char配列 (Array[Char])からStringへの変換</h4>
 Char配列からStringオブジェクトへは、Stringクラスのコンストラクタを使用して変換することができます。
+
 ```scala
   @Test
   def testCharArrayToString(): Unit = {
@@ -422,6 +440,7 @@ Char配列からStringオブジェクトへは、Stringクラスのコンスト�
 <img src="../image/string_course.019.jpeg" width="500px"><br>
 StringオブジェクトからChar数とコードポイント数の取得方法を説明します。
 Char数とコードポイント数はStringオブジェクト内にサロゲートペアが存在しない場合は一致します。しかし、サロゲートペアが含まれている場合には、Char数よりコードポイント数が少なくなります。Char数からコードポイント数を引いた数がStringオブジェクト内に存在するサロゲートペアの数です。
+
 ```scala
   @Test
   def testNumOfCharactersAndChars(): Unit = {
@@ -448,6 +467,7 @@ Char数とコードポイント数はStringオブジェクト内にサロゲー�
 <h4>2.7.1　StringからChar数 (IntまたはLong)の取得</h4>
 <img src="../image/string_course.020.jpeg" width="500px"><br>
 Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。String.lengthメソッドの方がIntStreamを経由するcharsメソッドを使った方法より高速です。
+
 ```scala
   @Test
   def testNumOfChars(): Unit = {
@@ -467,6 +487,7 @@ Char数はString.lengthメソッドか、charsメソッドで一度IntStreamに�
 <h4>2.7.2　Stringからコードポイント数 (Int)の取得</h4>
 <img src="../image/string_course.021.jpeg" width="500px"><br>
 コードポイント数はcodePointCountメソッドか、codePointsメソッドで一度IntStreamに変換しIntStreamのcountメソッドで取得できます。codePointCountメソッドの方がIntStreamを経由するcodePointsメソッドを使った方法より高速です。
+
 ```scala
   @Test
   def testNumOfCharacters(): Unit = {
@@ -490,6 +511,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
 <h4>2.8.1　コードポイント配列 (Array[Int])からStringへの変換</h4>
 <img src="../image/string_course.023.jpeg" width="500px"><br>
 コードポイント配列からStringオブジェクトへはStringクラスのコンストラクタで変換できます。コードポイント配列からCharSequenceへは一度Stringクラスのコンストラクトを介してStringオブジェクトに変換し、CharSequenceにキャストすることで変換可能です。
+
 ```scala
   @Test
   def testCodePointArrayToString(): Unit = {
@@ -502,6 +524,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
 <h4>2.8.2　CharSequenceやStringからコードポイント配列 (Array[Int])への変換</h4>
 <img src="../image/string_course.024.jpeg" width="500px"><br>
 Stringオブジェクト及びCharSequenceインターフェースを実装するオブジェクトからコードポイント配列へはCharSequenceインターフェースのcodePointsメソッド（Java 8以降）でIntStreamを取得し、それをtoArrayメソッドで配列に変換できます。
+
 ```scala
   @Test
   def testCharSequenceToCodePointArray(): Unit = {
@@ -534,6 +557,7 @@ Stringオブジェクト及びCharSequenceインターフェースを実装す�
 <h3>2.9　コードポイント数 (Int)だけ移動した位置のインデックス (Int)の取得</h3>
 <img src="../image/string_course.025.jpeg" width="500px"><br>
 codePointAt/codePointBeforeメソッドと同様に、CharacterクラスはChar配列、CharSequenceインターフェースを実装するオブジェクトに対して、Stringクラスは自身に対してoffsetByCodePointsメソッドを持っています。
+
 ```scala
   @Test
   def testOffsetByCodePoints1(): Unit = {
@@ -612,6 +636,7 @@ codePointAt/codePointBeforeメソッドと同様に、CharacterクラスはChar�
 <img src="../image/string_course.026.jpeg" width="500px"><br>
 StringCharacterIteratorは、コンストラクタにStringオブジェクトを与えることでChar単位でイテレートすることができます。StringCharacterIteratorが実装するCharacterIteratorインターフェースは順方向から解析するためのfirstメソッドとnextメソッド、そして逆方向から解析するためのlastメソッドとpreviousメソッドを保持しています。CharacterIterator.DONEでイテレータの終了を判定します。CharacterIterator.DONEはUnicode上で文字が割り当てられていない<a href="http://www.fileformat.info/info/unicode/char/ffff/index.htm" target="_blank">U+FFFF</a>です。
 サンプルコードは、サロゲートペアを発見したら幽霊文字の「彁」に置き換える（呪詛的な）処理です。
+
 ```scala
   @Test
   def testStringCharacterForwardIterator(): Unit = {
@@ -636,6 +661,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
   }
 ```
 順方向から解析すると「𠮷」が「彁」に置き換わって"彁野家"が出力されます。
+
 ```scala
   @Test
   def testStringCharacterBackwardIterator(): Unit = {
@@ -662,6 +688,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
 逆方向から解析すると結果は"家野彁"のように逆順になります。
 <h4>2.10.2　IntStreamによるChar単位のイテレータ</h4>
 次のプログラムはChar単位の順方向のイテレータです。
+
 ```scala
   @Test
   def testStringToCharLevelIntStreamForwardIterator(): Unit = {
@@ -681,6 +708,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
   }
 ```
 次のプログラムはChar単位の逆方向のイテレータです。
+
 ```scala
   @Test
   def testStringToCharLevelIntStreamBackwardIterator(): Unit = {
@@ -701,6 +729,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
 ```
 <h4>2.10.3　IntStreamによるコードポイント単位のイテレータ</h4>
 次のプログラムはコードポイント単位の順方向のイテレータです。
+
 ```scala
   @Test
   def testStringToCodePointLevelIntStreamForwardIterator(): Unit = {
@@ -720,6 +749,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
   }
 ```
 次のプログラムはコードポイント単位の逆方向のイテレータです。
+
 ```scala
   @Test
   def testStringToCodePointLevelIntStreamBackwardIterator(): Unit = {
@@ -749,6 +779,7 @@ StringCharacterIteratorは、コンストラクタにStringオブジェクトを
 </ul>
 <img src="../image/string_course.028.jpeg" width="500px"><br>
 IBMのMasahiko Maederaさんの技術文書によると、最も高速な変換は、StringをChar配列に変換して、Char配列からコードポイント配列にCharacter.toCodePointメソッドを使用して変換する方法です。参考までに、サンプルコードにはこの変換方法をScalaで書いたものを載せました。
+
 ```scala
   @Test
   def testCharSequenceToCodePointArrayUnderJava8(): Unit = {
