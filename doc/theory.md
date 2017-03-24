@@ -53,10 +53,12 @@ UTF-8でのBOMはビッグエンディアンやリトルエンディアンのよ
 <h4>（１）バイナリエディタによるUTF-8のBOMの手動削除</h4>
 UTF-8のBOMはバイナリエディタで確認し手動で除去できます。
 ここでは、バイナリエディタの例として<a href="https://ja.wikipedia.org/wiki/Vim" target="_blank">Vim</a>をバイナリモードで使用します。
+
 ```bash
 $ vi -b src/test/resources/day3/utf8_with_bom.xml 
 ```
 次は、バイナリモードでBOM付きのUTF-8でエンコードされたXMLファイルを開いた例です。
+
 ```xml
   1 <feff><?xml version="1.0" encoding="UTF-8" standalone="yes"?>^M
   2 <root>utf8 with bom</root>
@@ -66,6 +68,7 @@ $ vi -b src/test/resources/day3/utf8_with_bom.xml
 一々BOMがついていないかをバイナリエディタでUTF-8のファイルを開いて確認し、手動で削除する作業は大変です。
 BOM付きのファイルをScala上から開く際にファイルにBOMが存在していたらBOMを自動的に削除（スキップ）させる方法について説明します。
 例えば、上記のBOM付きUTF-8のXMLファイルをJavaの標準ライブラリにある<a href="http://docs.oracle.com/javase/jp/8/docs/api/org/w3c/dom/package-summary.html" target="_blank">org.w3c.dom</a>のDOMパーサで開いた場合Exceptionが発生します。InputStreamをサンプルコードのskipUTF8BOMメソッドに通すことでファイルの先頭のBOMをスキップした位置からファイルを読み込むことができるため、これによりBOMによるExceptionを回避できます。そして、このようにskipUTF8BOMメソッドに一度通して取得したデータを保存したファイルには意図しない限りUTF-8のBOMは付与されません。毎回UTF-8のファイルを開く際にskipUTF8BOMメソッドを通すことはBOMが入り込まないことが保証されているか入り込んでも問題ないことが保証されている場合は余計な処理ですが、そうではない場合は多少のオーバーヘッドを払ってでもskipUTF8BOMメソッドを通すことでBOMに対する安全対策を施しておくと安心です。なお、Scalaのscala.xmlのパーサはBOM付きのUTF-8のXMLファイルを入力してもExceptionは発生しません。org.w3c.domはJavaの標準ライブラリにありますが、scala.xmlは現在は標準ライブラリにはありませんのでScalaとは別途にインストールが必要です。本リポジトリでは<a href="http://www.scala-sbt.org/" target="_blank">SBT</a>を実行するとscala.xmlが自動的にインストールされます。
+
 ```scala
   private val input: Path = Paths.get("..", "..", "src", "test", "resources", "day3", "utf8_with_bom.xml")
 
@@ -126,10 +129,12 @@ BOM付きのファイルをScala上から開く際にファイルにBOMが存在
 <h3>コラム：UTF-8のセキュリティ問題、Nimda</h3>
 UTF-8の１文字の構造を正規表現で表すと次になる。  
 BOM（UTF-8では、byte orderは１通りなのでBOMは不要、付加するかは任意）：
+
 ```java
 \\xEF\\xBB\\xBF//ビッグエンディアンを表すBOMである0xFEFFをUTF-8エンコーディングするとこの3バイトになる。  
 ```
 文字：  
+
 ```java
 (?:  
                                                          [\\x00-\\x7F]|　//　1バイト文字  
