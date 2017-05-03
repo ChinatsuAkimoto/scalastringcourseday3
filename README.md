@@ -1,4 +1,4 @@
-<h1>Scalaの文字列処理 - Day 3 コードポイントとサロゲートペア -</h1>
+<h1>Scalaの文字列処理<br>- Day 3 コードポイントとサロゲートペア -</h1>
 <img src="/image/string_course.001.jpeg" width="500px"><br>
 今日は、コードポイントとサロゲートペアについて紹介したいと思います。  
 <h2><a href="http://ynupc.github.io/course/scalastringcourse/index.html" target="_blank">学習方法</a></h2>
