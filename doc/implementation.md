@@ -10,6 +10,7 @@
   <li>Stringからコードポイント配列に変換する方法、</li>
   <li>コードポイント配列からStringに変換する方法</li>
 </ol>
+
 ***
 <h3>2.1　サロゲートペア (Array[Char])とコードポイント (Int)の相互変換</h3>
 <img src="../image/string_course.010.jpeg" width="500px"><br>
