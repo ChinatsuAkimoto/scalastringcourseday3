@@ -144,8 +144,8 @@ class Day3TestSuite extends AssertionsForJUnit {
     val codePoint: Int = 0x20BB7
     val countOpt: Option[Int] =
       if (Character.isValidCodePoint(codePoint)) {
-        Option(Character.charCount(codePoint))}
-      else {
+        Option(Character.charCount(codePoint))
+      } else {
         None
       }
 
